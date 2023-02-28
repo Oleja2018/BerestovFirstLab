@@ -4,9 +4,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BerestovFirstLab">
 
-    <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+    <Style x:Key="TextBlockStyle" TargetType="TextBox">
         <Setter Property="Background" Value="White" />
         <Setter Property="Foreground" Value="Gray" />
+        
     </Style>
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Background" Value="White" />

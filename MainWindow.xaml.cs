@@ -167,22 +167,8 @@ namespace BerestovFirstLab
                 case "Way":
                     WayHandlerClick();
                     break;
-                case "Main":
-                    //MessageBox.Show("Вызван - Main");
-                    break;
-                case "Know":
-                    //MessageBox.Show("Вызван - Know");
-                    break;
-                case "BackgroundStyle":
-                    //MessageBox.Show("Вызван - BackgroundStyle");
-                    break;
-                case "TextStyle":
-                    //MessageBox.Show("Вызван - TextStyle");
-                    break;
                 case "Styles":
-                    //MessageBox.Show("Вызван - Styles");
                     LoadStylesRes();
-
                     break;
             }
 
@@ -277,11 +263,9 @@ namespace BerestovFirstLab
                 listNameImg.Height = ImageBox.Height;
                 listNameImg.Width = 280;
                 txbPath.Width = listNameImg.Width;
-
-
+                listNameImg.Margin =  new Thickness(21,76,0,50); 
             }
-
-
+            
         }
         /// <summary>
         /// При изменение разрещшения вызвать изменение элементов
