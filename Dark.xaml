@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BerestovFirstLab">
+    <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Background" Value="#38444c" />
+        <Setter Property="Foreground" Value="#FFF" />
+        
+    </Style>
+    <Style x:Key="WindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="#38444c" />
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#38444c" />
+        <Setter Property="Foreground" Value="#ec1a62" />
+        <Setter Property="BorderBrush" Value="White" />
+    </Style>
+</ResourceDictionary>

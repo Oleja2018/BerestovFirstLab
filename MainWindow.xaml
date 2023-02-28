@@ -1,0 +1,36 @@
+﻿<Window x:Class="BerestovFirstLab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BerestovFirstLab"
+        mc:Ignorable="d"
+        Title="Viewer Image jpg" Height="450" Width="800" MaxHeight ="586" MaxWidth="1144"  Style="{DynamicResource WindowStyle}" SizeChanged="Window_SizeChanged" >
+    <Grid x:Name="BodyScreen">
+        <Menu  VerticalAlignment="Top" x:Name="MenuBrowseStyle" Background="#FFF" Grid.ColumnSpan="2" Margin="0,0,-33,0" Grid.RowSpan="2">
+            <MenuItem x:Name="Main" Header="Файл" Click="MenuItem_Click">
+                <MenuItem Click="HandlerClick" x:Name="Way" Header="Выбрать путь"></MenuItem>
+                <MenuItem Click="Know_Click" x:Name="Know" Header="Очистить все"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Интерфейс">
+                <MenuItem Click="GetInfoElements_Click" x:Name="GetInfoElements" Header="Получить размеры элементов"></MenuItem>
+                <MenuItem Click="GetInfoSizeScreen_Click" x:Name="GetInfoSizeScreen" Header="Узнать размеры экрана"></MenuItem>
+                <MenuItem Click="HandlerClick" x:Name="Styles" Header="Выбрать готовый стиль"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ListBox x:Name="listNameImg" Grid.Column="0" HorizontalAlignment="Left" Height="317" Margin="21,76,0,0"  IsSynchronizedWithCurrentItem="True" DisplayMemberPath="FileName" VerticalAlignment="Top" Width="262" SelectionChanged="listNameImg_SelectionChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBox x:Name="txbPath"  Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="21,48,0,0" TextWrapping="Wrap" Text="Путь файла: " VerticalAlignment="Top" Width="262" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Image x:Name="ImageBox" Grid.Column="1" HorizontalAlignment="Left" Height="340" Margin="44,48,0,0" VerticalAlignment="Top" Width="440" Stretch="Fill" Grid.Row="1"/>
+        <GridSplitter Grid.Column="1" ShowsPreview="True" Width="3" Margin="23,21,0,10" HorizontalAlignment="Left" Grid.Row="1" />
+        <!--Немного изучив структуру шаблона, пришел к выводу что это грид в наполнении и не ошибся-->
+        <Grid.RowDefinitions>
+            <!--1 строка 2 столбца-->
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="425*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="283"/>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Window>

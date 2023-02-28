@@ -1,0 +1,21 @@
+﻿<Window x:Class="BerestovFirstLab.SelectStyle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BerestovFirstLab"
+        mc:Ignorable="d"
+        Title="SelectStyle" Height="146" Width="302" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="233"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ComboBox Grid.Column="0"  x:Name="styleBox" HorizontalAlignment="Left" Margin="27,39,0,0" VerticalAlignment="Top" Width="194" Height="22"/>
+    </Grid>
+
+</Window>
