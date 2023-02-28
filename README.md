@@ -7,13 +7,7 @@
 1. Создаем внутри проекта папку, называем DictionaryStyles.
 2. Переносим туда наши стили.
 3. В файле app.xaml находим строчки
-<Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="light.xaml"/>
                 <ResourceDictionary Source="Dark.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
 Меняем  <ResourceDictionary Source="light.xaml"/> на  <ResourceDictionary Source="DictionaryStyles/light.xaml"/>
 Меняем  <ResourceDictionary Source="light.xaml"/> на  <ResourceDictionary Source="DictionaryStyles/Dark.xaml"/>
