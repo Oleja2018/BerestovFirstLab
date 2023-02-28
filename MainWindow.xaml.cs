@@ -162,21 +162,6 @@ namespace BerestovFirstLab
                 }
             }
         }
-
-        private void WayHandlerClick() {
-
-            // Выбор папки, это попа
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                // Проверка на дубликаты, есть возможность просмотра нескольких папок
-                txbPath.Text = folderBrowser.SelectedPath;            
-            }
-            //Загрузка истории вызовов
-            HistoryChoise(txbPath.Text);
-            // Поиск картинок и их загрузка в коллекцию
-            GetInfoFile();
-        }
        
         /// <summary>
         /// Логика менюшки с использованием switch case, заменена вызовом событий напрямую, но часть еще осталась
@@ -247,24 +232,14 @@ namespace BerestovFirstLab
         }
         private void listNameImg_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
         {           
-            SetChoise();
+            
         }
 
         private void listNameImg_GotMouseCapture_1(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            SetChoise();
+            
         }
-        private void LoadDefaultImage()
-        {
-            string pathFile = Environment.CurrentDirectory;
-            string pathFileEdit = pathFile.Replace(@"bin\Debug", "Assets");
-            // C:\C#\Berestov\BerestovFirstLab\Assets\Images
-            pathFileEdit = pathFileEdit + Convert.ToString(@"\Images");
-
-            @txbPath.Text = pathFileEdit;
-            GetInfoFile();
-
-        }
+        
         
         /// <summary>
         /// Загрузка нашего изображения
