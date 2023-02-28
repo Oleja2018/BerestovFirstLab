@@ -34,17 +34,68 @@ namespace BerestovFirstLab
 
     public partial class MainWindow : Window
     {
-
+        // Коллекция объектов изображений(Класс GetImage, файл Image)
         public ObservableCollection<GetImage> GetImages { get; set; }
+        // Доп функционал, напрямую не используется
         internal List<string> ListHistory = new List<string>();
         
 
         public MainWindow()
         {
             InitializeComponent();
+            //Процедура загрузки картинок из ассетов
             LoadDefaultImage();
         }
-     
+
+
+        /// <summary>
+        /// Загрузка стандартных картинок, по уму надо бы переписать процедуру
+        /// </summary>
+        private void LoadDefaultImage()
+        {
+            // Получаем путь
+            string pathFile = Environment.CurrentDirectory;
+            // Приводим к нашему типу(да да можно было просто включить папку в проект)
+            
+            string pathFileEditBin = pathFile.Replace(@"bin\Debug", "Assets");
+            string pathFileEditRelease = pathFile.Replace(@"bin\Release", "Assets");
+            pathFileEditBin = pathFileEditBin + Convert.ToString(@"\Images");
+            pathFileEditRelease = pathFileEditRelease + Convert.ToString(@"\Images");
+            // проверка существования пути
+            if (Directory.Exists(pathFileEditBin))
+            {
+                @txbPath.Text = pathFileEditBin;
+            }
+            else {
+                @txbPath.Text = pathFileEditRelease;
+            }
+            // меняем значение текст бокса, вызываем нашу функцию поиска
+           
+            GetInfoFile();
+
+        }
+        /// <summary>
+        /// Выбор пути до нашей папки
+        /// </summary>
+        private void WayHandlerClick()
+        {
+
+            // Выбор папки, это попа
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // Проверка на дубликаты, есть возможность просмотра нескольких папок
+                txbPath.Text = folderBrowser.SelectedPath;
+            }
+            //Загрузка истории вызовов
+            HistoryChoise(txbPath.Text);
+            // Поиск картинок и их загрузка в коллекцию
+            GetInfoFile();
+        }
+
+        /// <summary>
+        /// Поиск файлов в папке
+        /// </summary>
         private void GetInfoFile() {
 
             /* Поиск по каталогу атрубут SearchOption.TopDirectoryOnly обязателен,
@@ -53,6 +104,7 @@ namespace BerestovFirstLab
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(@txbPath.Text);
                 GetImages = new ObservableCollection<GetImage>();
+                // Ищем все файлы по нашему условию
                 FileInfo[] files = directoryInfo.GetFiles("*.jpg", SearchOption.TopDirectoryOnly);
 
                 // Заполняем GetImage
@@ -70,7 +122,9 @@ namespace BerestovFirstLab
             }
             
         }
-
+        /// <summary>
+        /// Очистка программы от выбранных файлов и изображенний
+        /// </summary>
         private void ClearChoise() {
             if (txbPath.Text != "Путь файла: ") {
                 ClearImageBox();
@@ -92,10 +146,10 @@ namespace BerestovFirstLab
             ImageBox.Source = null;
         }
 
-        // Выбор изображения, и его загрузка
-        private void SetChoise() {
-            MessageBox.Show("Появилась картинка");
-        }
+        /// <summary>
+        /// История выбора, доп функционал, напрямую не используется
+        /// </summary>
+        /// <param name="path"></param>
         private void HistoryChoise(string path) {
             if (path != null) {
                 ListHistory.Add(path);
@@ -123,7 +177,12 @@ namespace BerestovFirstLab
             // Поиск картинок и их загрузка в коллекцию
             GetInfoFile();
         }
-
+       
+        /// <summary>
+        /// Логика менюшки с использованием switch case, заменена вызовом событий напрямую, но часть еще осталась
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HandlerClick(object sender, RoutedEventArgs e) {
 
             // Создаем объект класса Меню итем(передаем наш объект)
@@ -157,7 +216,11 @@ namespace BerestovFirstLab
             }
 
         }
+        // Случайно созданная процедура, два раза кликнул по менюшке
         private void MenuItem_Click(object sender, RoutedEventArgs e) { }
+        /// <summary>
+        /// Реализация логики получения информации об размерах элементов
+        /// </summary>
         private void GetInfoElement() {
             MessageBox.Show(Convert.ToString($"ImageBox: Height: {ImageBox.ActualHeight}  Width: {ImageBox.ActualWidth}"));
             MessageBox.Show(Convert.ToString($"listNameImg: Height: {listNameImg.ActualHeight}  Width: {listNameImg.ActualWidth}"));
@@ -166,10 +229,16 @@ namespace BerestovFirstLab
 
         }
 
+        /// <summary>
+        /// Очистить все, на меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Know_Click(object sender, RoutedEventArgs e)
         {
             ClearChoise();
         }
+        // Процедура вызова второго окна
         private void LoadStylesRes() {
             SelectStyle taskWindow = new SelectStyle();
             taskWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
@@ -177,7 +246,7 @@ namespace BerestovFirstLab
             taskWindow.Show();
         }
         private void listNameImg_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        {           
             SetChoise();
         }
 
@@ -196,7 +265,12 @@ namespace BerestovFirstLab
             GetInfoFile();
 
         }
-
+        
+        /// <summary>
+        /// Загрузка нашего изображения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listNameImg_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Создать элемент изображения
@@ -228,7 +302,9 @@ namespace BerestovFirstLab
         {
             MessageBox.Show(Convert.ToString($"Height: {BodyScreen.ActualHeight} Width:{BodyScreen.ActualWidth}"));
         }
-
+        /// <summary>
+        /// Подобие адаптивности, но я устал
+        /// </summary>
         private void MediaQuary() {
 
             int Height = Convert.ToInt32(BodyScreen.ActualHeight);
@@ -246,7 +322,11 @@ namespace BerestovFirstLab
             
 
         }
-
+        /// <summary>
+        /// При изменение разрещшения вызвать изменение элементов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             MediaQuary();

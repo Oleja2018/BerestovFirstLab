@@ -23,17 +23,20 @@ namespace BerestovFirstLab
         public SelectStyle()
         {
             InitializeComponent();
-
+            // Создаем коллекцию 
             List<string> styles = new List<string> { "light", "Dark" };
+            // При выборе начинает выполняться процедура
             styleBox.SelectionChanged += ThemeChange;
+            // загрузка данных
             styleBox.ItemsSource = styles;
+            // первоначально выбранные
             styleBox.SelectedItem = "light";
         }
         private void ThemeChange(object sender, SelectionChangedEventArgs e)
         {
             string style = styleBox.SelectedItem as string;
             // определяем путь к файлу ресурсов
-            var uri = new Uri(style + ".xaml", UriKind.Relative);
+            var uri = new Uri(@"ResourceDictionary\" + style + ".xaml", UriKind.Relative);
             // загружаем словарь ресурсов
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
             // очищаем коллекцию ресурсов приложения
