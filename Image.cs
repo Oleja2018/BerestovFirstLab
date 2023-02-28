@@ -18,11 +18,11 @@ namespace BerestovFirstLab
             Path = url;
         }
         public string GetInfoImage() { 
-        
+
             string result = Convert.ToString($"Name:{FileName}, Path: {Path}");
             return result;
         }
-        
+
 
 
     }

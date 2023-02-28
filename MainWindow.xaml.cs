@@ -24,7 +24,7 @@ namespace BerestovFirstLab
         public ObservableCollection<GetImage> GetImages { get; set; }
         // Доп функционал, напрямую не используется
         internal List<string> ListHistory = new List<string>();
-        
+
 
         public MainWindow()
         {
@@ -42,7 +42,7 @@ namespace BerestovFirstLab
             // Получаем путь
             string pathFile = Environment.CurrentDirectory;
             // Приводим к нашему типу(да да можно было просто включить папку в проект)
-            
+
             string pathFileEditBin = pathFile.Replace(@"bin\Debug", "Assets");
             string pathFileEditRelease = pathFile.Replace(@"bin\Release", "Assets");
             pathFileEditBin = pathFileEditBin + Convert.ToString(@"\Images");
@@ -56,7 +56,7 @@ namespace BerestovFirstLab
                 @txbPath.Text = pathFileEditRelease;
             }
             // меняем значение текст бокса, вызываем нашу функцию поиска
-           
+
             GetInfoFile();
 
         }
@@ -86,7 +86,7 @@ namespace BerestovFirstLab
 
             /* Поиск по каталогу атрубут SearchOption.TopDirectoryOnly обязателен,
             тк нам не нужно искать в подкаталогах */
-            if (@txbPath.Text != "Путь файла: ") 
+            if (@txbPath.Text != "Путь файла: ")
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(@txbPath.Text);
                 GetImages = new ObservableCollection<GetImage>();
@@ -106,7 +106,7 @@ namespace BerestovFirstLab
                 if (GetImages.DefaultIfEmpty() != null) { }
                 else { MessageBox.Show("Картинок в формате .jpg не обнаружено"); }
             }
-            
+
         }
         /// <summary>
         /// Очистка программы от выбранных файлов и изображенний
@@ -116,7 +116,7 @@ namespace BerestovFirstLab
                 ClearImageBox();
                 ClearListNameImg();
             }
-           
+
         }
         // Доп функция очистки листа
         private void ClearListNameImg()
@@ -148,7 +148,7 @@ namespace BerestovFirstLab
                 }
             }
         }
-       
+
         /// <summary>
         /// Логика менюшки с использованием switch case, заменена вызовом событий напрямую, но часть еще осталась
         /// </summary>
@@ -196,7 +196,7 @@ namespace BerestovFirstLab
             MessageBox.Show(Convert.ToString($"ImageBox: Height: {ImageBox.ActualHeight}  Width: {ImageBox.ActualWidth}"));
             MessageBox.Show(Convert.ToString($"listNameImg: Height: {listNameImg.ActualHeight}  Width: {listNameImg.ActualWidth}"));
             MessageBox.Show(Convert.ToString($"txbPath: Height: {txbPath.ActualHeight}  Width: {txbPath.ActualWidth}"));
-       
+
 
         }
 
@@ -217,16 +217,16 @@ namespace BerestovFirstLab
             taskWindow.Show();
         }
         private void listNameImg_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {           
-            
+        {
+
         }
 
         private void listNameImg_GotMouseCapture_1(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// Загрузка нашего изображения
         /// </summary>
@@ -236,7 +236,7 @@ namespace BerestovFirstLab
         {
             // Создать элемент изображения
             GetImage imageView = listNameImg.SelectedItem as GetImage;
-            
+
 
             if (imageView != null)
             {
@@ -280,7 +280,7 @@ namespace BerestovFirstLab
 
 
             }
-            
+
 
         }
         /// <summary>
