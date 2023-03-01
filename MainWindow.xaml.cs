@@ -102,7 +102,7 @@ namespace BerestovFirstLab
                 // Заполняем наш листбокс
 
                 // Проверка на наличие картинок
-                if (GetImages.DefaultIfEmpty() != null) { }
+                if (GetImages.DefaultIfEmpty() == null) { }
                 else { MessageBox.Show("Картинок в формате .jpg не обнаружено"); }
             }
         }
